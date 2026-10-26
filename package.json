@@ -1,0 +1,27 @@
+{
+  "name": "solicitud-accesos-visitas",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "packages/shared",
+    "server",
+    "web"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "dev:db": "npm run dev:db -w server",
+    "migrate": "npm run migrate -w server",
+    "seed": "npm run seed -w server",
+    "dev:api": "npm run dev -w server",
+    "dev:web": "npm run dev -w web",
+    "build": "npm run build -w web"
+  },
+  "allowScripts": {
+    "@embedded-postgres/windows-x64@16.14.0-beta.17": true,
+    "esbuild@0.28.2": true
+  }
+}

@@ -1,0 +1,136 @@
+/* Tokens y piezas base del diseño aprobado . La fuente viene de @fontsource. */
+:root {
+  color-scheme: light;
+  --ground: #f2f3f1;        /* gris mineral de la estepa nublada */
+  --surface: #ffffff;
+  --raised: #e9ebe8;        /* un paso de tono sobre el fondo */
+  --active: #e3e5e2;
+  --ink: #15181b;
+  --muted: #5b6168;
+  --border: #e3e5e2;
+  --rule: #eceeeb;
+  --control: #c9cdc8;
+  --primary: #15181b;
+  --primary-ink: #ffffff;
+
+  --verde: #299f2d;         /* el triángulo del logo */
+  --verde-ink: #1f7a2d;     /* texto "habilitado" (4.5:1 sobre blanco) */
+  --pill-ok-bg: #e4f4e4;  --pill-ok-ink: #1a5e22;
+  --pill-hse-bg: #fff7e0; --pill-hse-ink: #8a4b05;
+  --pill-no-bg: #ffedea;  --pill-no-ink: #831c1e;
+  --peligro: #b42318;     --peligro-ink: #ffffff;   /* botón de acción que borra */
+  --pill-neutral-bg: #e9ebe8; --pill-neutral-ink: #3b4046;
+
+  /* Circuito: un solo tono que avanza de oscuro a claro; la tinta de cada etapa va con su fondo. */
+  --etapa-1: #15181b; --etapa-2: #2b3137; --etapa-3: #444c55; --etapa-4: #6b737c; --etapa-5: #d9dcd7;
+  --etapa-ink: #ffffff; --etapa-5-ink: #15181b;
+  /* Superficies de énfasis (pregunta abierta) y campo del pie: oscuras en claro, y siguen oscuras en oscuro. */
+  --enfasis-bg: #15181b; --enfasis-ink: #ffffff;
+  --campo: #15181b; --campo-ink: #f2f3f1; --campo-muted: #b9bec3;
+
+  /* Escala tipográfica del portal: seis tamaños, ninguno más. */
+  --t-nota: 14px;           /* créditos, pies de foto, datos secundarios, navegación */
+  --t-texto: 18px;          /* texto corrido, formularios, botones */
+  --t-sub: 24px;            /* bajada de portada, subtítulos, preguntas */
+  --t-seccion-chico: 36px;  /* títulos de sección en tablet y teléfono */
+  --t-seccion: 44px;        /* títulos de sección; título de portada en tablet y teléfono */
+  --t-portada: 64px;        /* título de portada en escritorio */
+
+  --font: "Archivo Variable", "Archivo", system-ui, sans-serif;
+  --ancho-titulo: 112%;     /* ancho expandido de cartelería para títulos */
+
+  /* El motivo: la pendiente del flanco del triángulo (46.43 de ancho por 82.74 de alto). */
+  --flanco: 0.561;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 280ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #111111; --surface: #1a1a1a; --raised: #222222; --active: #262626;
+    --ink: #f4f4f4; --muted: #b4b4b4; --border: #2e2e2e; --rule: #242424; --control: #444444;
+    --primary: #f4f4f4; --primary-ink: #111111;
+    --verde: #4cc25a; --verde-ink: #4cc25a;
+    --pill-ok-bg: #16281a;  --pill-ok-ink: #5fd06c;
+    --pill-hse-bg: #2a2110; --pill-hse-ink: #f2b544;
+    --pill-no-bg: #2c1a20;  --pill-no-ink: #e5566f;
+    --peligro: #e5566f;     --peligro-ink: #111111;
+    --pill-neutral-bg: #262626; --pill-neutral-ink: #e0e0e0;
+    --etapa-1: #3a3f45; --etapa-2: #32363b; --etapa-3: #2a2e32; --etapa-4: #23262a; --etapa-5: #1a1a1a;
+    --etapa-ink: #f4f4f4; --etapa-5-ink: #f4f4f4;
+    --enfasis-bg: #2c3035; --enfasis-ink: #f4f4f4;
+    --campo: #1a1a1a; --campo-ink: #f4f4f4; --campo-muted: #b4b4b4;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #111111; --surface: #1a1a1a; --raised: #222222; --active: #262626;
+  --ink: #f4f4f4; --muted: #b4b4b4; --border: #2e2e2e; --rule: #242424; --control: #444444;
+  --primary: #f4f4f4; --primary-ink: #111111;
+  --verde: #4cc25a; --verde-ink: #4cc25a;
+  --pill-ok-bg: #16281a;  --pill-ok-ink: #5fd06c;
+  --pill-hse-bg: #2a2110; --pill-hse-ink: #f2b544;
+  --pill-no-bg: #2c1a20;  --pill-no-ink: #e5566f;
+    --peligro: #e5566f;     --peligro-ink: #111111;
+  --pill-neutral-bg: #262626; --pill-neutral-ink: #e0e0e0;
+  --etapa-1: #3a3f45; --etapa-2: #32363b; --etapa-3: #2a2e32; --etapa-4: #23262a; --etapa-5: #1a1a1a;
+    --etapa-ink: #f4f4f4; --etapa-5-ink: #f4f4f4;
+    --enfasis-bg: #2c3035; --enfasis-ink: #f4f4f4;
+    --campo: #1a1a1a; --campo-ink: #f4f4f4; --campo-muted: #b4b4b4;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--font); -webkit-font-smoothing: antialiased; font-kerning: normal; }
+h1, h2, h3, h4, p, figure, blockquote, ul, ol, dl, dd { margin: 0; }
+ul[class], ol[class] { padding: 0; list-style: none; }
+img, svg, video { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+::selection { background: var(--ink); color: var(--ground); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Franja de barrera de acceso: barras rectas o diagonales con el flanco del triángulo (29,3°).
+   Va dentro de un contenedor con overflow: hidden. */
+.barrera { display: flex; flex: none; }
+.barrera span { flex: 1; }
+.barrera span:nth-child(odd) { background: var(--ink); }
+.barrera.diagonal { margin-inline: -40px; }
+.barrera.diagonal span { transform: skewX(-29.3deg); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Logo: el triángulo siempre verde, las letras toman el color del texto. */
+.logo { display: block; height: auto; color: var(--ink); overflow: visible; }
+.logo .tri { fill: var(--verde); transform-box: fill-box; transition: transform 250ms var(--ease-out); }
+a:hover > .logo .tri { transform: translateY(2px); }
+
+/* El triángulo como viñeta y como señal. Gris en reposo; verde solo cuando algo está habilitado. */
+.tri-mark { display: inline-block; flex: none; width: 0.62em; height: 0.55em; background: var(--muted); clip-path: polygon(0 0, 100% 0, 50% 100%); }
+.tri-mark.ok { background: var(--verde); }
+
+/* Botón primario: el borde derecho sigue el flanco del triángulo. */
+.btn-corte { --h: 48px; display: inline-flex; align-items: center; height: var(--h); padding: 0 calc(var(--h) * var(--flanco) + 20px) 0 22px; background: var(--primary); color: var(--primary-ink); font-weight: 600; text-decoration: none; white-space: nowrap; clip-path: polygon(0 0, 100% 0, calc(100% - var(--h) * var(--flanco)) 100%, 0 100%); transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease; }
+.btn-corte:hover { background: color-mix(in srgb, var(--primary) 82%, var(--ground)); }
+.btn-corte:active { transform: translateY(1px) scale(0.985); }
+
+/* Píldoras de estado: tinte pálido con tinta del mismo tono. */
+.pill { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 9px; border-radius: 999px; font-size: var(--t-nota); font-weight: 500; background: var(--pill-neutral-bg); color: var(--pill-neutral-ink); white-space: nowrap; }
+.pill.hse { background: var(--pill-hse-bg); color: var(--pill-hse-ink); }
+.pill.ok { background: var(--pill-ok-bg); color: var(--pill-ok-ink); }
+.pill.no { background: var(--pill-no-bg); color: var(--pill-no-ink); }
+.pill .punto { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+@media (prefers-reduced-motion: no-preference) {
+  .pill .punto.late { animation: late 1.4s ease-in-out infinite alternate; }
+}
+@keyframes late { to { opacity: 0.45; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}

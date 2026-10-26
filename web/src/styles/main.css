@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import "@fontsource-variable/archivo/wdth.css";
+@import "./tokens.css";
+
+/* Utilidades de Tailwind atadas a los tokens del diseño: bg-surface, text-muted, text-sub, etc. */
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-verde: var(--verde);
+  --font-sans: var(--font);
+  --text-nota: var(--t-nota);
+  --text-texto: var(--t-texto);
+  --text-sub: var(--t-sub);
+  --text-seccion-chico: var(--t-seccion-chico);
+  --text-seccion: var(--t-seccion);
+  --text-portada: var(--t-portada);
+}
+
+:root { --margin: clamp(16px, 2.4vw, 36px); }
+body { font-size: var(--t-texto); line-height: 1.5; min-height: 100svh; }
+h1, h2, h3 { font-stretch: var(--ancho-titulo); font-weight: 680; letter-spacing: -0.02em; text-wrap: balance; }
+p { text-wrap: pretty; }
+.wrap { padding-inline: var(--margin); }
+.enlace { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.enlace:hover { text-decoration-thickness: 2px; }
+
+/* Botón secundario y campos: comparten alto con el primario. */
+.btn-sec { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 20px; border-radius: 4px; background: var(--raised); color: var(--ink); font-weight: 600; transition: background-color var(--t-hover) ease, transform var(--t-press) var(--ease-out); }
+.btn-sec:hover { background: var(--active); }
+.btn-sec:active { transform: translateY(1px); }
+/* Acción que borra datos: solo dentro de una confirmación. */
+.btn-peligro { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 20px; border-radius: 4px; background: var(--peligro); color: var(--peligro-ink); font-weight: 600; transition: filter var(--t-hover) ease, transform var(--t-press) var(--ease-out); }
+.btn-peligro:hover { filter: brightness(1.08); }
+.btn-peligro:active { transform: translateY(1px); }
+.btn-peligro:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.btn-corte:disabled, .btn-sec:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.btn-corte { border: 0; cursor: pointer; font: inherit; font-weight: 600; }
+
+.campo { display: grid; gap: 6px; align-content: start; }
+.campo > label, .campo > .rotulo { font-weight: 600; }
+.campo .ayuda { color: var(--muted); font-size: var(--t-nota); }
+.campo .error { color: var(--pill-no-ink); font-size: var(--t-nota); font-weight: 500; }
+.entrada { width: 100%; min-height: 48px; padding: 10px 14px; border: 1px solid var(--control); border-radius: 4px; background: var(--surface); color: var(--ink); font-size: var(--t-texto); transition: border-color var(--t-hover) ease; }
+.entrada:hover { border-color: var(--muted); }
+.entrada:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink); }
+.entrada[aria-invalid="true"] { border-color: var(--pill-no-ink); }
+textarea.entrada { min-height: 120px; resize: vertical; line-height: 1.45; }
+select.entrada { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3' fill='none' stroke='%235b6168' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 14px; padding-right: 40px; }
+
+.aviso { display: flex; gap: 10px; align-items: baseline; padding: 12px 14px; border-radius: 4px; background: var(--pill-hse-bg); color: var(--pill-hse-ink); }
+.aviso.error { background: var(--pill-no-bg); color: var(--pill-no-ink); }
+.aviso.ok { background: var(--pill-ok-bg); color: var(--pill-ok-ink); }
+.aviso .tri-mark { background: currentColor; }

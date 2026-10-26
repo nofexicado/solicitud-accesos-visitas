@@ -1,0 +1,46 @@
+{
+  "name": "@accesos/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "dev:db": "node scripts/dev-db.js",
+    "migrate": "node-pg-migrate up -m src/db/migrations --envPath .env -d DATABASE_URL_MIGRATOR",
+    "migrate:down": "node-pg-migrate down -m src/db/migrations --envPath .env -d DATABASE_URL_MIGRATOR",
+    "seed": "node src/db/seeds/run.js",
+    "test": "vitest run",
+    "db:test": "node scripts/base-test.js"
+  },
+  "devDependencies": {
+    "embedded-postgres": "^16.14.0-beta.17",
+    "supertest": "^7.3.1",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^7.1.1",
+    "@fontsource/archivo": "^5.3.0",
+    "@accesos/shared": "0.1.0",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.1",
+    "file-type": "^21.3.4",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.5.0",
+    "node-cron": "^4.6.0",
+    "node-pg-migrate": "^8.0.4",
+    "nodemailer": "^10.2.1",
+    "pdfkit": "^0.20.2",
+    "pg": "^8.23.1",
+    "pino": "^9.14.0",
+    "pino-roll": "^4.0.0",
+    "qrcode": "^1.5.4",
+    "svg-to-pdfkit": "^0.1.8",
+    "zod": "^4.6.7"
+  }
+}
